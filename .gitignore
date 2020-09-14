@@ -11,3 +11,5 @@ node_modules/
 npm-debug.log*
 yarn-debut.log*
 yarn-error.log*
+# Local Netlify folder
+.netlify
