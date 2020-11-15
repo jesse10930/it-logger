@@ -6,12 +6,14 @@ import {
   TECHS_ERROR
 } from '../actions/types';
 
+// declare initial state
 const initialState = {
   techs: null,
   loading: false,
   error: null
 };
 
+// find type passed into action prop, update state and return
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_TECHS:

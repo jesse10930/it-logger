@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// declare tech schema with 3 categories
 const TechSchema = mongoose.Schema({
   id: {
     type: String,

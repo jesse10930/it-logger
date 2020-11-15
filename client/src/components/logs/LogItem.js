@@ -7,10 +7,12 @@ import { deleteLog, setCurrent } from '../../actions/logActions';
 import M from 'materialize-css/dist/js/materialize.min.js';
 
 const LogItem = ({ log, deleteLog, setCurrent }) => {
+  // delare component action to delete log
   const onDelete = () => {
     deleteLog(log._id);
     M.toast({ html: 'Log Deleted' });
   };
+
   return (
     <li className='collection-item'>
       <div>
@@ -19,6 +21,7 @@ const LogItem = ({ log, deleteLog, setCurrent }) => {
           className={`modal-trigger ${
             log.attention ? 'red-text' : 'green-text'
           }`}
+          // set current log when clicked
           onClick={() => setCurrent(log)}
         >
           {log.message}

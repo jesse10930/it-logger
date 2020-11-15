@@ -6,14 +6,18 @@ import { addLog } from '../../actions/logActions';
 import M from 'materialize-css/dist/js/materialize.min.js';
 
 const AddLogModal = ({ addLog }) => {
+  // declare state
   const [message, setMessage] = useState('');
   const [attention, setAttention] = useState(false);
   const [tech, setTech] = useState('');
 
+  // run when form submitted
   const onSubmit = () => {
+    // check if input field empty
     if (message === '' || tech === '') {
       M.toast({ html: 'Please enter a message and tech' });
     } else {
+      // declare user input
       const newId = Math.floor(Math.random() * 1000000);
       const newLog = {
         id: newId,
@@ -23,6 +27,7 @@ const AddLogModal = ({ addLog }) => {
         data: new Date()
       };
 
+      // add new log
       addLog(newLog);
 
       M.toast({ html: `Log added by ${tech}` });

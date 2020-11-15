@@ -6,11 +6,13 @@ import PropTypes from 'prop-types';
 import { getLogs } from '../../actions/logActions';
 
 const Logs = ({ log: { logs, loading }, getLogs }) => {
+  // get logs when first mounted
   useEffect(() => {
     getLogs();
     // eslint-disable-next-line
   }, []);
 
+  // check loading and logs have input
   if (loading || logs === null) {
     return <Preloader />;
   }
@@ -20,9 +22,11 @@ const Logs = ({ log: { logs, loading }, getLogs }) => {
       <li className='collection-header'>
         <h4 className='center'>System Logs</h4>
       </li>
+      {/* when loading false and logs array empty */}
       {!loading && logs.length === 0 ? (
         <p className='center'>No logs to show...</p>
       ) : (
+        // map through logs array, return LogItem component for each one
         logs.map(log => <LogItem log={log} key={log.id} />)
       )}
     </ul>
@@ -34,6 +38,7 @@ Logs.propTypes = {
   getLogs: PropTypes.func.isRequired
 };
 
+// declare component level state
 const mapStateToProps = state => ({
   log: state.log
 });

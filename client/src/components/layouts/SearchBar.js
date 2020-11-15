@@ -6,19 +6,24 @@ import { searchLogs, getLogs } from '../../actions/logActions';
 const SearchBar = ({ searchLogs, getLogs }) => {
   const text = useRef('');
 
+  // reset text field, run getLogs
   const onClick = e => {
     text.current.value = '';
     getLogs();
   };
 
+  // run when key released
   const onKeyUp = async e => {
+    // run  if back space pressed
     if (e.keyCode === 8) {
+      // if text field empty, return all logs, else return searchLogs for text field value
       if (text.current.value !== '') {
         getLogs();
       }
       let temp = e.target.value;
       await getLogs();
       searchLogs(temp);
+      // run for all other keys pressed
     } else if (text.current.value !== '') {
       searchLogs(e.target.value);
     } else {

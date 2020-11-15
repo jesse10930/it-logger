@@ -8,6 +8,7 @@ const Log = require('../models/Log');
 // @desc    Retrieve logs
 // @access  Public
 router.get('/', async (req, res) => {
+  // find logs in db and return data
   try {
     const logs = await Log.find().sort({ date: -1 });
     res.send(logs);
@@ -22,19 +23,23 @@ router.get('/', async (req, res) => {
 // @access  Public
 router.post(
   '/',
+  // middleware check message not empty
   [
     check('message', 'Message is required')
       .not()
       .isEmpty()
   ],
   async (req, res) => {
+    // declare errors array, check it's empty
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ error: errors.array() });
     }
 
+    // declare request variables
     const { id, message, attention, tech, date } = req.body;
 
+    // declare new log schema
     try {
       const newLog = new Log({
         id,
@@ -44,6 +49,7 @@ router.post(
         date
       });
 
+      // save new log schema to db
       const log = await newLog.save();
 
       res.json(log);
@@ -58,14 +64,17 @@ router.post(
 // @desc    Update a log
 // @access  Public
 router.put('/:id', async (req, res) => {
+  // declare request variables
   const { id, message, attention, tech } = req.body;
 
+  // declare empty object, check if request info matches db info
   const logFields = {};
   if (id) logFields.id = id;
   if (message) logFields.message = message;
   if (attention) logFields.attention = attention;
   if (tech) logFields.tech = tech;
 
+  // declare log variable with db, update if found
   try {
     let log = await Log.findById(req.params.id);
 
@@ -88,6 +97,7 @@ router.put('/:id', async (req, res) => {
 // @desc    Remove a log
 // @access  Public
 router.delete('/:id', async (req, res) => {
+  // declare log variable with data from db, delete if found
   try {
     let log = await Log.findById(req.params.id);
 

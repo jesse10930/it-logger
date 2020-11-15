@@ -5,6 +5,7 @@ import { deleteTech } from '../../actions/techActions';
 import M from 'materialize-css/dist/js/materialize.min.js';
 
 const TechItem = ({ tech: { _id, firstName, lastName }, deleteTech }) => {
+  // delete tech from db
   const onDelete = () => {
     deleteTech(_id);
     M.toast({ html: 'Tech deleted' });

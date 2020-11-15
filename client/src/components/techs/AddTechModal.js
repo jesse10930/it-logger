@@ -5,12 +5,16 @@ import { addTech } from '../../actions/techActions';
 import M from 'materialize-css/dist/js/materialize.min.js';
 
 const AddTechModal = ({ addTech }) => {
+  // declare component level state
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
 
+  // when form submited, store new tech and clear fields
   const onSubmit = () => {
+    // check for empty fields
     if (firstName === '' || lastName === '') {
       M.toast({ html: 'Please enter the first and last name' });
+      // store new tech
     } else {
       const id = Math.floor(Math.random() * 1000000);
       addTech({

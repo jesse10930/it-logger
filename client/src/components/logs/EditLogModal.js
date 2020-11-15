@@ -6,10 +6,12 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 import { updateLog } from '../../actions/logActions';
 
 const EditLogModal = ({ current, updateLog }) => {
+  // declare component state
   const [message, setMessage] = useState('');
   const [attention, setAttention] = useState(false);
   const [tech, setTech] = useState('');
 
+  // if current prop not empty, set comp state to current prop data
   useEffect(() => {
     if (current) {
       setMessage(current.message);
@@ -18,9 +20,12 @@ const EditLogModal = ({ current, updateLog }) => {
     }
   }, [current]);
 
+  // run on form submit
   const onSubmit = () => {
+    // check if message is emtpy
     if (message === '' || tech === '') {
       M.toast({ html: 'Please enter a message and tech' });
+      // declare user input
     } else {
       const updLog = {
         tempID: current._id,
@@ -30,6 +35,7 @@ const EditLogModal = ({ current, updateLog }) => {
         date: new Date()
       };
 
+      // save new log data
       updateLog(updLog);
       M.toast({ html: `Log updated by ${tech}` });
 
@@ -99,6 +105,7 @@ const EditLogModal = ({ current, updateLog }) => {
   );
 };
 
+// modal size
 const modalStyle = {
   width: '75%',
   height: '75%'
@@ -109,6 +116,7 @@ EditLogModal.propTypes = {
   updateLog: PropTypes.func.isRequired
 };
 
+// declare component action
 const mapStateToProps = state => ({
   current: state.log.current
 });

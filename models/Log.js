@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// declare log scheam with 5 categories
 const LogSchema = mongoose.Schema({
   id: {
     type: String,
