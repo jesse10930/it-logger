@@ -1,8 +1,8 @@
 # IT Logger
-Project from @bradtraversy. Web app designed to keep track of logs for an IT department. Users can update tasks, change status of tasks, change technicians, etc.
+Project from [@bradtraversy](https://github.com/bradtraversy). Web app designed to keep track of logs for an IT department. Users can update tasks, change status of tasks, change technicians, etc.
 
 # Motivation
-To practice what I learned from @bradtraversy 's [React course,](https://www.udemy.com/course/modern-react-front-to-back/) including front end design, backend storage, Redux state management, and Heroku deployment.
+To practice what I learned from [@bradtraversy](https://github.com/bradtraversy)'s [React course,](https://www.udemy.com/course/modern-react-front-to-back/) including front end design, backend storage, Redux state management, and Heroku deployment.
 
 # Screenshot
 ![screenshot](https://live.staticflickr.com/65535/51003638923_47f46ab228_w.jpg)
